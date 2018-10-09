@@ -27,7 +27,7 @@ var currentLocation = {
  * Switch channels name in the right app bar
  * @param channelObject
  */
-function switchChannel(channelObject) {
+function switchChannel(channelObject, channelElement) {
     // Log the channel switch
     console.log("Tuning in to channel", channelObject);
 
@@ -247,6 +247,11 @@ function Channel(name) {
     this.messageCount = 0;
 }
 
+
+// $("button").click(function(){
+//     $("p:first").addClass("intro");
+// });
+
 /**
  * #10 #new
  * This function creates a channel object and pushes it to the global 'channels' array.
@@ -309,7 +314,10 @@ function createChannelElement(channelObject) {
      */
 
     // create a channel
-    var channel = $('<li>').text(channelObject.name);
+    var channel = $('<li>').text(channelObject.name).click(function () {
+      console.log('<li> with id +' $(this).attr('id') +' clicked');
+      console.log('pippo');
+    });
 
     // create and append channel meta
     var meta = $('<span>').addClass('channel-meta').appendTo(channel);
@@ -324,7 +332,23 @@ function createChannelElement(channelObject) {
 
     // The chevron
     $('<i>').addClass('fas').addClass('fa-chevron-right').appendTo(meta);
-
+    
+    /*
+    //#click
+    channel.click(function () {
+      //console.log('<li> with id +' $(this).attr('id') +' clicked');
+      console.log('pippo');
+    });
+    */
+    
+    /*
+    //#click
+    $('li').click(function () {
+      //console.log('<li> with id +' $(this).attr('id') +' clicked');
+      console.log('pippo');
+    });
+    */
+    
     // return the complete channel
     return channel;
 }
