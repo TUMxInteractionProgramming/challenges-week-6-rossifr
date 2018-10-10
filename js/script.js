@@ -23,6 +23,14 @@ var currentLocation = {
     what3words: "shelf.jetted.purple"
 };
 
+/*
+*/
+function showMessages(channelObject){
+    $.each(channelObject.messages, function(i, v) {
+        createMessageElement(v);
+    });
+}
+
 /**
  * Switch channels name in the right app bar
  * @param channelObject
@@ -58,6 +66,7 @@ function switchChannel(channelObject, channelElement) {
 
     /* store selected channel in global variable */
     currentChannel = channelObject;
+    showMessages(currentChannel);
 }
 
 /* liking a channel on #click */
