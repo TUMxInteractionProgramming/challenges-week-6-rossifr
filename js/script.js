@@ -225,7 +225,11 @@ function listChannels(criterion) {
 
     /* #10 append channels from #array with a #for loop */
     for (i = 0; i < channels.length; i++) {
-        $('#channels ul').append(createChannelElement(channels[i]));
+        var x=createChannelElement(channels[i]);
+        if(channels[i]==currentChannel){
+            x.addClass('selected');
+        }
+        $('#channels ul').append(x);
     };
 }
 
@@ -313,14 +317,9 @@ function createChannelElement(channelObject) {
     // create a channel
     var channel = $('<li>').text(channelObject.name);
 	
-    
     $('li').on('click', function() {
-        /*$(this).slideUp();*/
-
         switchChannel(channelObject, $(this));
-	console.log("pippo");
     });
-
 
     // create and append channel meta
     var meta = $('<span>').addClass('channel-meta').appendTo(channel);
