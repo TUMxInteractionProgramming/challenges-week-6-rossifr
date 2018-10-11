@@ -23,6 +23,12 @@ var currentLocation = {
     what3words: "shelf.jetted.purple"
 };
 
+$(document).ready(function() {
+    listChannels(compareNew); 
+    loadEmojis();
+    console.log("App is initialized");
+});
+
 /*
 */
 function showMessages(channelObject){
